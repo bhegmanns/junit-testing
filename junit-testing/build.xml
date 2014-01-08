@@ -1,0 +1,42 @@
+<project name="junit-testing" default="test-and-site" basedir="." xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+    <description>
+        Enthaelt eine Reihe von ANT-Tasks zur einfachen Ausfuehrung von Maven-Zielen.
+    </description>
+	
+  <property name="src" location="src/main/java"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="target/classes"/>
+  <property name="mavenhome" value="D:\java_tools\maven3"/>
+	
+  <target name="test-and-site" depends="clean">
+  	<artifact:mvn mavenhome="${mavenhome}" fork="true">
+  	        <arg value = "test"/>
+  	</artifact:mvn>
+  	<artifact:mvn mavenhome="${mavenhome}" fork="true">
+  	            <arg value = "site"/>
+  	</artifact:mvn> 
+  </target>
+	
+  <target name="install-local-repository" depends="clean">
+  	<artifact:mvn mavenhome="${mavenhome}" fork="true">
+  		<arg value="install"/>
+  	</artifact:mvn>
+	</target>
+	
+  <target name="deploy-mvn-remote-repository" depends="clean">
+
+  	<artifact:mvn mavenhome="${mavenhome}"  fork="true">
+  	    <arg value="deploy"/>
+  	</artifact:mvn>
+	</target>
+	
+  <target name="clean" description="Ausfuehrung von CLEAN">
+  	
+  	
+	    <artifact:mvn mavenhome="${mavenhome}" fork="true">
+	        <arg value = "clean"/>
+	    </artifact:mvn>
+	    
+	  </target>
+  
+</project>
