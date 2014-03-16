@@ -2,10 +2,18 @@ package hegmanns.it.de.junit.matcher;
 
 import hegmanns.it.de.junit.basisklassen.Geldbetrag;
 
-import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
+/**
+ * Hamcrest-Matcher fuer Geldbetrag-Instanzen.
+ * 
+ * Der Betrag (in BigDecimal) wird ueber die compareTo-Methode
+ * verglichen, um nur den effekten Wert zu vergleichen.
+ * 
+ * @author B. Hegmanns
+ *
+ */
 public class GeldbetragMatcher extends TypeSafeMatcher<Geldbetrag>{
 
 	public static <T extends Geldbetrag> GeldbetragMatcher equalTo(T geldbetrag)

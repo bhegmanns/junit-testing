@@ -1,10 +1,16 @@
 package hegmanns.it.de.junit.basisklassen.komposite.ergebnis;
 
-public enum MessageSeverage {
+/**
+ * Die Eindringlichkeit/Gefahrenstufe der Nachricht.
+ * 
+ * @author B. Hegmanns
+ *
+ */
+public enum MessageSeverity {
 
 	INFO(true), WARN(true), ERROR(false), FATAL(false);
 	
-	private MessageSeverage(boolean ok)
+	private MessageSeverity(boolean ok)
 	{
 		this.ok = ok;
 	}
