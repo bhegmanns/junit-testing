@@ -1,6 +1,9 @@
 package hegmanns.it.de.junit.matcher;
 
+import java.math.BigDecimal;
+
 import hegmanns.it.de.junit.basisklassen.Geldbetrag;
+import hegmanns.it.de.junit.basisklassen.Waehrung;
 
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
@@ -21,10 +24,22 @@ public class GeldbetragMatcher extends TypeSafeMatcher<Geldbetrag>{
 		return new GeldbetragMatcher(geldbetrag);
 	}
 	
-	private GeldbetragMatcher(Geldbetrag expected){
+	public static <T extends Geldbetrag> GeldbetragMatcher equalWaehrung(Waehrung waehrung)
+	{
+		return new GeldbetragMatcher(new Geldbetrag(BigDecimal.ZERO, waehrung), true);
+	}
+	
+	private GeldbetragMatcher(Geldbetrag expected, boolean scopeOnlyWaehrung)
+	{
 		this.exptected = expected;
+		this.scopeOnlyWaehrung = scopeOnlyWaehrung;
+	}
+	
+	private GeldbetragMatcher(Geldbetrag expected){
+		this(expected, false);
 	}
 	private Geldbetrag exptected;
+	private boolean scopeOnlyWaehrung;
 	
 	@Override
 	public void describeTo(Description description) {
@@ -42,7 +57,14 @@ public class GeldbetragMatcher extends TypeSafeMatcher<Geldbetrag>{
 
 	@Override
 	protected boolean matchesSafely(Geldbetrag item) {
+		if (!scopeOnlyWaehrung)
+		{
 		return item.getBetrag().compareTo(exptected.getBetrag()) == 0 && item.getWaehrung().equals(exptected.getWaehrung());
+		}
+		else
+		{
+			return item.getWaehrung().equals(exptected.getWaehrung());
+		}
 	}
 
 	
