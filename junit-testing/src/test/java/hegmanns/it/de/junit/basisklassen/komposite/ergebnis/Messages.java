@@ -19,12 +19,6 @@ public class Messages {
 
 	Set<Message> messages;
 	
-	boolean ok = true;
-	
-	public Messages()
-	{
-		messages = new HashSet<>();
-	}
 	
 	public void add(Message message)
 	{
@@ -36,11 +30,7 @@ public class Messages {
 	{
 		return messages;
 	}
-	
-	public Set<Message> getMessages(MessageSeverage severity)
-	{
-		return messages;
-	}
+
 	
 	public boolean isOk()
 	{
@@ -104,10 +94,5 @@ public class Messages {
 		}
 		
 		return messages;
-	}
-	
-	public boolean isOk()
-	{
-		return ok;
 	}
 }
