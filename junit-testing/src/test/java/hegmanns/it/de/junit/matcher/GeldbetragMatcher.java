@@ -18,18 +18,37 @@ public class GeldbetragMatcher extends TypeSafeMatcher<Geldbetrag>{
 	}
 	private Geldbetrag exptected;
 	
+	/**
+	 * Teil es Fehlertextes.
+	 * 
+	 * Der Fehlertext lautet:
+	 * java.lang.AssertionError:
+	 * Expected: describeTo(Description)
+	 * but: describeMismatchSafely(...)
+	 * 
+	 * Diese Methode gibt also den ersten Teil des Fehlertextes zurueck.
+	 */
 	@Override
 	public void describeTo(Description description) {
-		description.appendText("a value ").appendValue(exptected);
+		description.appendText("expected was ").appendValue(exptected);
 	}
 	
 	
-
+	/**
+	 * Teil es Fehlertextes.
+	 * 
+	 * Der Fehlertext lautet:
+	 * java.lang.AssertionError:
+	 * Expected: describeTo(Description)
+	 * but: describeMismatchSafely(...)
+	 * 
+	 * Diese Methode gibt also den zweiten Teil des Fehlertextes zurueck.
+	 */
 	@Override
 	protected void describeMismatchSafely(Geldbetrag item,
 			Description mismatchDescription) {
-		mismatchDescription.appendValue(item).appendText(" was ")
-		.appendText(", expected was ").appendValue(exptected);
+		mismatchDescription.appendValue(item).appendText(" isn't ")
+		.appendText(" same as ").appendValue(exptected);
 	}
 
 	@Override
