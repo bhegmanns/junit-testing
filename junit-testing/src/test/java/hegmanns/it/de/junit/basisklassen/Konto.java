@@ -8,7 +8,7 @@ import java.util.Date;
  * 
  * @author B. Hegmanns
  */
-public class Konto
+public class Konto extends AbstractCommonObject
 {
 
     /**

@@ -1,5 +1,11 @@
 package hegmanns.it.de.junit.testing;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import hegmanns.it.de.junit.basisklassen.Geldbetrag;
+import hegmanns.it.de.junit.basisklassen.Konto;
+import hegmanns.it.de.junit.basisklassen.Waehrung;
+
 import java.math.BigDecimal;
 
 import org.hamcrest.MatcherAssert;
@@ -60,5 +66,19 @@ public class VergleichJUnitAssertHamcrestTest
         // MatcherAssert.assertThat(eins, Matchers.is(intEins));
 
         MatcherAssert.assertThat( eins.intValue() , Matchers.is( intEins ) );
+    }
+    
+    @Test
+    public void GeldbetragKontoVergleichenMitEquals()
+    {
+    	Geldbetrag betrag1 = new Geldbetrag(BigDecimal.ONE, Waehrung.EURO);
+    	Geldbetrag betrag2 = new Geldbetrag(BigDecimal.ONE, Waehrung.EURO);
+    	
+    	assertThat(betrag1.equals(betrag2), is(true));
+    	
+    	Konto k = new Konto();
+    	Konto kk = new Konto();
+    	
+    	assertThat(k.equals(kk), is(true));
     }
 }
