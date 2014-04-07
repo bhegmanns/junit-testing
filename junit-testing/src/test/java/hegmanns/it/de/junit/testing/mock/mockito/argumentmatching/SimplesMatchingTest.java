@@ -50,7 +50,7 @@ import static org.mockito.Mockito.when;
  *
  */
 @RunWith(MockitoJUnitRunner.class)
-public class SimplesMatching {
+public class SimplesMatchingTest {
 
 	@Mock
 	public Kurslieferant kurslieferant;
@@ -72,6 +72,11 @@ public class SimplesMatching {
 		assertThat("", betrag, GeldbetragMatcher.equalTo(new Geldbetrag(BigDecimal.TEN, Waehrung.EURO)));
 	}
 	
+	/**
+	 * Hier wird versucht, die Methode {@link Kurslieferant#getFaktor(Waehrung, Waehrung)} mit einem explizitem
+	 * Wert (Waehrung.EURO) und einem Mockito-Matcher-Ausdruck (Matchers.any(Waehrung.class)) zu mocken.
+	 * Dies geht allerdings nicht, daher die erwartete InvalidUseOfMatchersException (siehe oben)
+	 */
 	@Test(expected = InvalidUseOfMatchersException.class)
 	public void teilAbsolutTeilAnyMatchingFuehrtZuMockitoFehler()
 	{

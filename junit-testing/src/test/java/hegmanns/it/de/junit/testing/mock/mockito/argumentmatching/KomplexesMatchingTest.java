@@ -1,15 +1,16 @@
 package hegmanns.it.de.junit.testing.mock.mockito.argumentmatching;
 
-import java.math.BigDecimal;
-
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.when;
 import hegmanns.it.de.junit.basisklassen.Geldbetrag;
 import hegmanns.it.de.junit.basisklassen.Konto;
-import hegmanns.it.de.junit.basisklassen.Kurslieferant;
 import hegmanns.it.de.junit.basisklassen.Waehrung;
-import hegmanns.it.de.junit.basisklassen.Waehrungsrechner;
 import hegmanns.it.de.junit.basisklassen.WaehrungsrechnerInterface;
 import hegmanns.it.de.junit.basisklassen.service.BankTransaktionService;
 import hegmanns.it.de.junit.matcher.GeldbetragMatcher;
+
+import java.math.BigDecimal;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,13 +22,13 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
-import static org.mockito.Mockito.when;
-
+/**
+ * 
+ * @author B. Hegmanns
+ *
+ */
 @RunWith(MockitoJUnitRunner.class)
-public class KomplexesMatching {
+public class KomplexesMatchingTest {
 
 	@Mock
 	public WaehrungsrechnerInterface waehrungsrechner;
@@ -45,10 +46,9 @@ public class KomplexesMatching {
 	}
 	
 	@Test
-	public void simple()
+	public void direkteWerte()
 	{
 		Geldbetrag betrag = new Geldbetrag(BigDecimal.ONE, Waehrung.USD);
-		
 		when(waehrungsrechner.rechneInZielwaehrung(betrag)).thenReturn(new Geldbetrag(BigDecimal.TEN, Waehrung.EURO));
 		
 		boolean erfolg = service.auszahlungVornehmen(betrag, konto);
@@ -56,7 +56,7 @@ public class KomplexesMatching {
 	}
 	
 	@Test
-	public void foo()
+	public void mockitoMatcher()
 	{
 		when(waehrungsrechner.rechneInZielwaehrung(Matchers.eq(new Geldbetrag(BigDecimal.ONE, Waehrung.USD)))).thenReturn(new Geldbetrag(BigDecimal.TEN, Waehrung.USD));
 		
@@ -65,7 +65,7 @@ public class KomplexesMatching {
 	}
 	
 	@Test
-	public void komplexMitHamcrest()
+	public void hamcrestMatcher()
 	{
 		when(waehrungsrechner.rechneInZielwaehrung(Matchers.argThat(GeldbetragMatcher.equalTo(new Geldbetrag(BigDecimal.ONE, Waehrung.USD))))).thenReturn(new Geldbetrag(BigDecimal.TEN, Waehrung.EURO));
 		
