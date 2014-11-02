@@ -1,5 +1,7 @@
 package hegmanns.it.de.junit.testing.parametriertetests;
 
+import static org.hamcrest.Matchers.is;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,30 +22,50 @@ import org.junit.runners.Parameterized.Parameters;
  * aufgerufen und ausgefuehrt.<br>
  * In der Parameterliste koennen auch unterschiedliche Typen stehen.
  * 
+ * 
+ * 
+ * 
  * @author B. Hegmanns
  */
 @RunWith(Parameterized.class)
 public class ParametrierterTest
 {
 
-    @Parameters
+	/**
+	 * Hier finden sich die Parameter fuer die einzelnen Tests.
+	 * Beispielhaft ist hier auch mal ein Parameter enthalten, der in den
+	 * Tests eigentlich gar nicht verwendet wird, sondern "nur" zur Beschreibung
+	 * des Tests. Der "0". Parameter findet sich hier im name-Attribute
+	 * der {@link Parameters}-Annotation.
+	 * 
+	 * @return die Parameter fuer den Konstruktor
+	 */
+    @Parameters(name = "Parameter: {0}, {1}, {2}, {3}")
     public static List<Object[]> params()
     {
-        return Arrays.asList( new Object[][] { { 1, 2 }, { 1, 20 } } );
+        return Arrays.asList( new Object[][] { {  "richtig rechnen", 1, 2, 3 }, { "richtig rechnen", 1, 20, 21 } } );
     };
 
-    public ParametrierterTest( int wert1, int wert2 )
+    /**
+     * @param testname Information zum Testname
+     * @param ersterSummand erster Summand
+     * @param zweiterSummand zweiter Summand
+     * @param erwarteteSumme die erwartete Summe
+     */
+    public ParametrierterTest( String testname, int ersterSummand, int zweiterSummand, int erwarteteSumme  )
     {
-        this.wert1 = wert1;
-        this.wert2 = wert2;
+        this.ersterSummand = ersterSummand;
+        this.zweiterSummand = zweiterSummand;
+        this.erwarteteSumme = erwarteteSumme;
     }
 
-    private int wert1;
-    private int wert2;
+    private int ersterSummand;
+    private int zweiterSummand;
+    private int erwarteteSumme;
 
     @Test
-    public void groessenvergleich()
+    public void summe_wird_berechnet()
     {
-        MatcherAssert.assertThat( wert1 , Matchers.lessThanOrEqualTo( wert2 ) );
+        MatcherAssert.assertThat( ersterSummand + zweiterSummand , is(erwarteteSumme) );
     }
 }
