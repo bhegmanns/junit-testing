@@ -1,6 +1,7 @@
 package hegmanns.it.de.junit.testing.matcher;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
 import java.math.BigDecimal;
@@ -38,5 +39,19 @@ public class GeldbetragMatcherTest {
 		Geldbetrag value    = new Geldbetrag(BigDecimal.ONE, Waehrung.USD);
 		
 		assertThat(value, not(GeldbetragMatcher.equalTo(expected)));
+	}
+	
+	/**
+	 * Demonstriert, dass der Hamcrest-Matcher 'is' schlicht die einzelnen Properties
+	 * mit einander vergleicht. Fuer einen reinen Property-Vergleich muss also kein
+	 * eigener Hamcrest-Matcher geschrieben werden.
+	 */
+	@Test
+	public void vergleichOhneGeldbetragMatcher()
+	{
+		Geldbetrag expected = new Geldbetrag(BigDecimal.TEN, Waehrung.EURO);
+		Geldbetrag value    = new Geldbetrag(BigDecimal.TEN, Waehrung.EURO);
+		
+		assertThat(value, is(expected));
 	}
 }
