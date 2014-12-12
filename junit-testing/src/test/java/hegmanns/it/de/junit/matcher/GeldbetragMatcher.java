@@ -22,7 +22,7 @@ public class GeldbetragMatcher extends TypeSafeMatcher<Geldbetrag>{
 
 	public static <T extends Geldbetrag> GeldbetragMatcher equalTo(T geldbetrag)
 	{
-		return new GeldbetragMatcher(geldbetrag);
+		//return new GeldbetragMatcher(geldbetrag);
 	}
 	
 	public static <T extends Geldbetrag> GeldbetragMatcher equalWaehrung(Waehrung waehrung)
