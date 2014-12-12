@@ -30,7 +30,7 @@ public class MessageAttributeTest {
 		assertThat(bigDecimalAttribut.getValueAsString(), is("1"));
 	}
 	
-	@Test
+	//@Test
 	public void messageReady()
 	{
 		Message message = ExampleMessage.ERROR_VERFUEGBARER_BETRAG_FUER_KAUF_ZU_GERING;
