@@ -24,7 +24,7 @@ public class ExampleMessage {
 				new MessageAttribute<>(Geldbetrag.class, GeldbetragValueKonverter.get(), "ausmachenderBetrag", true),
 				new MessageAttribute<>(Geldbetrag.class, GeldbetragValueKonverter.get(), "betragAusWertpapierkredit", false),
 				new MessageAttribute<>(Geldbetrag.class, GeldbetragValueKonverter.get(), "fehlbetrag", true),
-				new MessageAttribute<>(Number.class, NumberValueKonverter.get(), "handelswertFuerVerfuegbarerBetrag", false),
-				new MessageAttribute<>(Number.class, NumberValueKonverter.get(), "veranschlagterKurs", false)
+				new MessageAttribute<>(Number.class, NumberValueKonverter.get(), "handelswertFuerVerfuegbarerBetrag", true),
+				new MessageAttribute<>(Number.class, NumberValueKonverter.get(), "veranschlagterKurs", true)
 	});
 }

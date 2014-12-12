@@ -139,7 +139,7 @@ public class Message {
 	@SuppressWarnings("unchecked")
 	public Collection<MessageAttribute<?>> getMandatoryAttributes()
 	{
-		return CollectionUtils.predicatedCollection(messageAttributes.values(), new Predicate() {
+		return CollectionUtils.select(messageAttributes.values(), new Predicate() {
 			
 			@Override
 			public boolean evaluate(Object object) {
@@ -151,7 +151,7 @@ public class Message {
 	@SuppressWarnings("unchecked")
 	public Collection<MessageAttribute<?>> getFilledAttributes()
 	{
-		return CollectionUtils.predicatedCollection(messageAttributes.values(), new Predicate() {
+		return CollectionUtils.select(messageAttributes.values(), new Predicate() {
 			
 			@Override
 			public boolean evaluate(Object object) {

@@ -32,7 +32,7 @@ public class MessageAttributeTest {
 	}
 	
 	@Test
-	@Ignore("Aktuell ein Fehler")
+//	@Ignore("Aktuell ein Fehler")
 	public void messageReady()
 	{
 		Message message = ExampleMessage.ERROR_VERFUEGBARER_BETRAG_FUER_KAUF_ZU_GERING;
@@ -42,6 +42,8 @@ public class MessageAttributeTest {
 		message.getAttributeByName("ausmachenderBetrag").setValue(new Geldbetrag(BigDecimal.TEN, Waehrung.EURO));
 		message.getAttributeByName("betragAusWertpapierkredit").setValue(new Geldbetrag(BigDecimal.ZERO, Waehrung.EURO));
 		message.getAttributeByName("fehlbetrag").setValue(new Geldbetrag(new BigDecimal("9"), Waehrung.EURO));
+		message.getAttributeByName("handelswertFuerVerfuegbarerBetrag").setValue(new BigDecimal(9));
+		message.getAttributeByName("veranschlagterKurs").setValue(new BigDecimal(9));
 		
 		assertThat(message.isReady(), is(true));
 	}
