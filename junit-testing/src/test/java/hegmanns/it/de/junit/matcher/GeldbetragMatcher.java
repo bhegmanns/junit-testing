@@ -11,6 +11,7 @@ import org.hamcrest.TypeSafeMatcher;
 /**
  * Hamcrest-Matcher fuer Geldbetrag-Instanzen.
  * 
+ * 
  * Der Betrag (in BigDecimal) wird ueber die compareTo-Methode
  * verglichen, um nur den effekten Wert zu vergleichen.
  * 
