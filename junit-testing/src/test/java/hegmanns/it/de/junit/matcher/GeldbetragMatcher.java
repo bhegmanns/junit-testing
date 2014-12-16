@@ -15,6 +15,7 @@ import org.hamcrest.TypeSafeMatcher;
  * Der Betrag (in BigDecimal) wird ueber die compareTo-Methode
  * verglichen, um nur den effekten Wert zu vergleichen.
  * 
+ * 
  * @author B. Hegmanns
  *
  */
