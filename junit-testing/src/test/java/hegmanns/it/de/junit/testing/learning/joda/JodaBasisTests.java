@@ -1,4 +1,4 @@
-package hegmanns.it.de.junit.testing.learning.juda;
+package hegmanns.it.de.junit.testing.learning.joda;
 
 import java.time.LocalTime;
 import java.util.Calendar;
