@@ -11,6 +11,7 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeUtils;
 import org.joda.time.LocalDate;
 import org.junit.Test;
+import static org.hamcrest.Matchers.*;
 
 public class JodaBasisTests {
 
@@ -22,7 +23,7 @@ public class JodaBasisTests {
 		Date dateVomLocalDateJetzt = localDateJetzt.toDate();
 		jetzt = DateUtils.truncate(jetzt, Calendar.DATE);
 		
-		MatcherAssert.assertThat(jetzt, Matchers.comparesEqualTo(dateVomLocalDateJetzt));
+		MatcherAssert.assertThat(jetzt, comparesEqualTo(dateVomLocalDateJetzt));
 	}
 	
 	@Test
@@ -37,7 +38,7 @@ public class JodaBasisTests {
 		jetzt = DateUtils.truncate(jetzt, Calendar.MONTH);
 		jetzt = DateUtils.truncate(jetzt, Calendar.DATE);
 		jetzt = DateUtils.addDays(jetzt, -1);
-		MatcherAssert.assertThat(jetzt, Matchers.comparesEqualTo(localDateLetzterTagImMonat.toDate()));
+		MatcherAssert.assertThat(jetzt, comparesEqualTo(localDateLetzterTagImMonat.toDate()));
 	}
 	
 	@Test
@@ -45,6 +46,24 @@ public class JodaBasisTests {
 		DateTime dateTime = new DateTime();
 		
 		dateTime.withTimeAtStartOfDay();
+	}
+	
+	@Test
+	public void zeitFestlegen()
+	{
+		DateTime monatsletzter = new DateTime().dayOfMonth().withMaximumValue();
+		DateTimeUtils.setCurrentMillisFixed(monatsletzter.getMillis());
+		
+		DateTime jetzt = new DateTime();
+		Date jetztDate = new Date();
+		System.out.println("" + jetzt.toString("dd.MM.yyyy hh:mm:ss"));
+		MatcherAssert.assertThat(jetztDate, not(comparesEqualTo(monatsletzter.toDate())));
+		
+		
+		DateTimeUtils.setCurrentMillisSystem();
+		jetzt = new DateTime();
+		jetztDate = new Date();
+		
 	}
 	
 	@Test
