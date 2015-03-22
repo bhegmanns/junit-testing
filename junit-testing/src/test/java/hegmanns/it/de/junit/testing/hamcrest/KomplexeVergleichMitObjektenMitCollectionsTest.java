@@ -1,5 +1,6 @@
 package hegmanns.it.de.junit.testing.hamcrest;
 
+import hegmanns.it.de.junit.basisklassen.Geldbetrag;
 import hegmanns.it.de.junit.basisklassen.Konto;
 import hegmanns.it.de.junit.basisklassen.Kontoart;
 import hegmanns.it.de.junit.hamcrest.matcher.MatcherFactory;
@@ -29,10 +30,10 @@ public class KomplexeVergleichMitObjektenMitCollectionsTest
     {
         konten = new ArrayList<>();
 
-        konten.add( new Konto( "11111" , Kontoart.GIROKONTO , BigDecimal.TEN , BigDecimal.TEN ) );
-        konten.add( new Konto( "11112" , Kontoart.SPARKONTO , BigDecimal.valueOf( 1000 ) , null ) );
-        konten.add( new Konto( "11113" , Kontoart.SPARKONTO , BigDecimal.valueOf( 100 ) , null ) );
-        konten.add( new Konto( "11114" , Kontoart.TAGEGELDKONTO , BigDecimal.valueOf( 10000 ) , null ) );
+        konten.add( new Konto( "11111" , Kontoart.GIROKONTO , Geldbetrag.createInEuro(BigDecimal.TEN) , Geldbetrag.createInEuro(BigDecimal.TEN) ) );
+        konten.add( new Konto( "11112" , Kontoart.SPARKONTO , Geldbetrag.createInEuro(BigDecimal.valueOf( 1000 )) , null ) );
+        konten.add( new Konto( "11113" , Kontoart.SPARKONTO , Geldbetrag.createInEuro(BigDecimal.valueOf( 100 )) , null ) );
+        konten.add( new Konto( "11114" , Kontoart.TAGEGELDKONTO , Geldbetrag.createInEuro(BigDecimal.valueOf( 10000 )) , null ) );
     }
 
     @Test

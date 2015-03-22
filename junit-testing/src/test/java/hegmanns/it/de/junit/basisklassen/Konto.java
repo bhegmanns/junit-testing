@@ -25,7 +25,7 @@ public class Konto extends AbstractCommonObject
      * Das zum {@link #zeitpunktAktualisierung Akualisierungszeitpunkt}
      * vorhandene Kontosaldo.
      */
-    private BigDecimal saldo;
+    private Geldbetrag saldo;
 
     /**
      * Die Kreditlinie dieses Kontos.
@@ -33,7 +33,7 @@ public class Konto extends AbstractCommonObject
      * Kennzeichnet den maximalen negativen Betrag dieses Kontos. Sofern keine
      * Kreditlinie existiert, steht hier {@link BigDecimal#ZERO}.
      */
-    private BigDecimal kreditlinie;
+    private Geldbetrag kreditlinie;
 
     /**
      * Zeitpunkt bzw. Bezugszeitpunkt der letzten Aktualisierung dieses Kontos.
@@ -65,7 +65,7 @@ public class Konto extends AbstractCommonObject
      * @param kreditlinie
      *            die Kreditlinie
      */
-    public Konto( String kontonummer, Kontoart kontoart, BigDecimal saldo, BigDecimal kreditlinie )
+    public Konto( String kontonummer, Kontoart kontoart, Geldbetrag saldo, Geldbetrag kreditlinie )
     {
         super();
         this.kontonummer = kontonummer;
@@ -122,7 +122,7 @@ public class Konto extends AbstractCommonObject
      * 
      * @return Saldo
      */
-    public BigDecimal getSaldo()
+    public Geldbetrag getSaldo()
     {
         return saldo;
     }
@@ -133,7 +133,7 @@ public class Konto extends AbstractCommonObject
      * @param saldo
      *            Saldo
      */
-    public void setSaldo( BigDecimal saldo )
+    public void setSaldo( Geldbetrag saldo )
     {
         this.saldo = saldo;
     }
@@ -143,7 +143,7 @@ public class Konto extends AbstractCommonObject
      * 
      * @return Kreditlinie
      */
-    public BigDecimal getKreditlinie()
+    public Geldbetrag getKreditlinie()
     {
         return kreditlinie;
     }
@@ -154,7 +154,7 @@ public class Konto extends AbstractCommonObject
      * @param kreditlinie
      *            Kreditlinie
      */
-    public void setKreditlinie( BigDecimal kreditlinie )
+    public void setKreditlinie( Geldbetrag kreditlinie )
     {
         this.kreditlinie = kreditlinie;
     }

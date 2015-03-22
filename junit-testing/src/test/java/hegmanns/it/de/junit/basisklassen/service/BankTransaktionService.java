@@ -20,9 +20,10 @@ public class BankTransaktionService {
 	public boolean auszahlungVornehmen(Geldbetrag geldbetrag, Konto konto)
 	{
 		Geldbetrag geldbetragInAbrechnungswaehrung = waehrungsrechner.rechneInZielwaehrung(geldbetrag);
-		BigDecimal saldoNachAuszahlung = konto.getSaldo().subtract(geldbetragInAbrechnungswaehrung.getBetrag());
 		
-		if (saldoNachAuszahlung.compareTo(BigDecimal.ZERO)>=0)
+		Geldbetrag saldoNachAuszahlung = konto.getSaldo().subtract(geldbetragInAbrechnungswaehrung);
+		
+		if (saldoNachAuszahlung.getBetrag().compareTo(BigDecimal.ZERO)>=0)
 		{
 			konto.setSaldo(saldoNachAuszahlung);
 			return true;

@@ -42,7 +42,7 @@ public class KomplexesMatchingTest {
 	@Before
 	public void beforeAnyTest()
 	{
-		when(konto.getSaldo()).thenReturn(BigDecimal.TEN);
+		when(konto.getSaldo()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
 	}
 	
 	@Test

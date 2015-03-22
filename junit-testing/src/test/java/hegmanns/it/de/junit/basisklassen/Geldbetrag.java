@@ -64,5 +64,15 @@ public class Geldbetrag extends AbstractCommonObject{
 		}
 	}
 	
+	public Geldbetrag subtract(Geldbetrag geldbetragInGleicherWaehrung)
+	{
+		return add(geldbetragInGleicherWaehrung.negate());
+	}
+	
+	public Geldbetrag negate()
+	{
+		return new Geldbetrag(betrag.negate(), waehrung);
+	}
+	
 	
 }
