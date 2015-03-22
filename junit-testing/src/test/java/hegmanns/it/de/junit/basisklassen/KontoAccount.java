@@ -24,9 +24,9 @@ public class KontoAccount {
 	 * 
 	 * @return die Gesamt-Kreditlinie
 	 */
-	public BigDecimal getGesamtKreditlinie()
+	public Geldbetrag getGesamtKreditlinie()
 	{
-		BigDecimal gesamtKreditlinie = BigDecimal.ZERO;
+		Geldbetrag gesamtKreditlinie = Geldbetrag.createInEuro(BigDecimal.ZERO);
 		
 		for (Konto konto : konten)
 		{
@@ -41,9 +41,9 @@ public class KontoAccount {
 	 * 
 	 * @return den Gesamt-verfuegbaren Betrag
 	 */
-	public BigDecimal getGesamtVerfuegbarerBetrag()
+	public Geldbetrag getGesamtVerfuegbarerBetrag()
 	{
-		BigDecimal gesamtVerfuegbarerBetrag = BigDecimal.ZERO;
+		Geldbetrag gesamtVerfuegbarerBetrag = Geldbetrag.createInEuro(BigDecimal.ZERO);
 		
 		for (Konto konto : konten)
 		{

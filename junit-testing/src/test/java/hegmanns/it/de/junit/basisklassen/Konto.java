@@ -180,7 +180,7 @@ public class Konto extends AbstractCommonObject
         this.zeitpunktAktualisierung = zeitpunktAktualisierung;
     }
     
-    public BigDecimal getAktuellVerfuegbarerBetrag()
+    public Geldbetrag getAktuellVerfuegbarerBetrag()
     {
     	return getSaldo().add(getKreditlinie());
     }

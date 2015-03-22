@@ -7,6 +7,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import hegmanns.it.de.junit.basisklassen.Geldbetrag;
 import hegmanns.it.de.junit.basisklassen.Konto;
 import hegmanns.it.de.junit.basisklassen.KontoAccount;
 import hegmanns.it.de.junit.basisklassen.Kontoart;
@@ -22,10 +23,10 @@ public class SpyAlsMockTest {
 	public void spyZurKontrolle()
 	{
 		// Originalobjekte
-		Konto girokonto1 = erstelleKonto("12345", Kontoart.GIROKONTO, BigDecimal.TEN, BigDecimal.TEN);
-		Konto girokonto2 = erstelleKonto("2468", Kontoart.GIROKONTO, BigDecimal.ONE, BigDecimal.TEN);
-		Konto girokonto3 = erstelleKonto("55555", Kontoart.GIROKONTO, BigDecimal.TEN, BigDecimal.valueOf(5).negate());
-		Konto sparkonto  = erstelleKonto("11111", Kontoart.SPARKONTO, BigDecimal.ZERO, BigDecimal.TEN);
+		Konto girokonto1 = erstelleKonto("12345", Kontoart.GIROKONTO, Geldbetrag.createInEuro(BigDecimal.TEN), Geldbetrag.createInEuro(BigDecimal.TEN));
+		Konto girokonto2 = erstelleKonto("2468", Kontoart.GIROKONTO, Geldbetrag.createInEuro(BigDecimal.ONE), Geldbetrag.createInEuro(BigDecimal.TEN));
+		Konto girokonto3 = erstelleKonto("55555", Kontoart.GIROKONTO, Geldbetrag.createInEuro(BigDecimal.TEN), Geldbetrag.createInEuro(BigDecimal.valueOf(5).negate()));
+		Konto sparkonto  = erstelleKonto("11111", Kontoart.SPARKONTO, Geldbetrag.createInEuro(BigDecimal.ZERO), Geldbetrag.createInEuro(BigDecimal.TEN));
 
 		// die Spy-Objekte
 		Konto spyGiro1 = Mockito.spy(girokonto1);
@@ -35,8 +36,8 @@ public class SpyAlsMockTest {
 		
 		// Aktionen mit den Spy-Objekten
 		KontoAccount account = new KontoAccount(spyGiro1, spyGiro2, spyGiro3, spySpar);
-		BigDecimal kreditlinie = account.getGesamtKreditlinie();
-		BigDecimal verfuegbar = account.getGesamtVerfuegbarerBetrag();
+		Geldbetrag kreditlinie = account.getGesamtKreditlinie();
+		Geldbetrag verfuegbar = account.getGesamtVerfuegbarerBetrag();
 		
 		assertThat(kreditlinie, is(BigDecimal.valueOf(21)));
 		assertThat(verfuegbar, is(BigDecimal.valueOf(46)));
@@ -61,10 +62,10 @@ public class SpyAlsMockTest {
 	@Test
 	public void spyUndFunktionMocken()
 	{
-		Konto girokonto1 = erstelleKonto("12345", Kontoart.GIROKONTO, BigDecimal.TEN, BigDecimal.TEN);
-		Konto girokonto2 = erstelleKonto("2468", Kontoart.GIROKONTO, BigDecimal.ONE, BigDecimal.TEN);
-		Konto girokonto3 = erstelleKonto("55555", Kontoart.GIROKONTO, BigDecimal.TEN, BigDecimal.valueOf(5).negate());
-		Konto sparkonto  = erstelleKonto("11111", Kontoart.SPARKONTO, BigDecimal.ZERO, BigDecimal.TEN);
+		Konto girokonto1 = erstelleKonto("12345", Kontoart.GIROKONTO, Geldbetrag.createInEuro(BigDecimal.TEN), Geldbetrag.createInEuro(BigDecimal.TEN));
+		Konto girokonto2 = erstelleKonto("2468", Kontoart.GIROKONTO, Geldbetrag.createInEuro(BigDecimal.ONE), Geldbetrag.createInEuro(BigDecimal.TEN));
+		Konto girokonto3 = erstelleKonto("55555", Kontoart.GIROKONTO, Geldbetrag.createInEuro(BigDecimal.TEN), Geldbetrag.createInEuro(BigDecimal.valueOf(5).negate()));
+		Konto sparkonto  = erstelleKonto("11111", Kontoart.SPARKONTO, Geldbetrag.createInEuro(BigDecimal.ZERO), Geldbetrag.createInEuro(BigDecimal.TEN));
 		
 		Konto spyGiro1 = Mockito.spy(girokonto1);
 		Konto spyGiro2 = Mockito.spy(girokonto2);
@@ -72,24 +73,24 @@ public class SpyAlsMockTest {
 		Konto spySpar = Mockito.spy(sparkonto);
 		KontoAccount account = new KontoAccount(spyGiro1, spyGiro2, spyGiro3, spySpar);
 
-		when(spyGiro1.getKreditlinie()).thenReturn(BigDecimal.ONE);
-		when(spyGiro2.getKreditlinie()).thenReturn(BigDecimal.ONE);
-		when(spyGiro3.getKreditlinie()).thenReturn(BigDecimal.ONE);
-		when(spySpar.getKreditlinie()).thenReturn(BigDecimal.ZERO);
+		when(spyGiro1.getKreditlinie()).thenReturn(Geldbetrag.createInEuro(BigDecimal.ONE));
+		when(spyGiro2.getKreditlinie()).thenReturn(Geldbetrag.createInEuro(BigDecimal.ONE));
+		when(spyGiro3.getKreditlinie()).thenReturn(Geldbetrag.createInEuro(BigDecimal.ONE));
+		when(spySpar.getKreditlinie()).thenReturn(Geldbetrag.createInEuro(BigDecimal.ZERO));
 		verify(spyGiro1, never()).getKreditlinie();
 		verify(spyGiro1, never()).getSaldo();
 		verify(spyGiro1, never()).getAktuellVerfuegbarerBetrag(); 
 		
-		when(spyGiro1.getAktuellVerfuegbarerBetrag()).thenReturn(BigDecimal.TEN);
-		when(spyGiro2.getAktuellVerfuegbarerBetrag()).thenReturn(BigDecimal.TEN);
-		when(spyGiro3.getAktuellVerfuegbarerBetrag()).thenReturn(BigDecimal.TEN);
-		when(spySpar.getAktuellVerfuegbarerBetrag()).thenReturn(BigDecimal.TEN);
+		when(spyGiro1.getAktuellVerfuegbarerBetrag()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
+		when(spyGiro2.getAktuellVerfuegbarerBetrag()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
+		when(spyGiro3.getAktuellVerfuegbarerBetrag()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
+		when(spySpar.getAktuellVerfuegbarerBetrag()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
 		verify(spyGiro1, never()).getKreditlinie();
 		verify(spyGiro1).getSaldo(); // getAktuellVerfuegbarerBetrag() benutzt getSaldo() 
 		verify(spyGiro1).getAktuellVerfuegbarerBetrag();
 		
-		BigDecimal kreditlinie = account.getGesamtKreditlinie();
-		BigDecimal verfuegbar = account.getGesamtVerfuegbarerBetrag();
+		Geldbetrag kreditlinie = account.getGesamtKreditlinie();
+		Geldbetrag verfuegbar = account.getGesamtVerfuegbarerBetrag();
 		assertThat(kreditlinie, is(BigDecimal.valueOf(3)));
 		assertThat(verfuegbar, is(BigDecimal.valueOf(40)));
 		
@@ -107,18 +108,18 @@ public class SpyAlsMockTest {
 		Konto mockSpar = mock(Konto.class);
 		
 		KontoAccount account = new KontoAccount(mockGiro1, mockGiro2, mockGiro3, mockSpar);
-		when(mockGiro1.getKreditlinie()).thenReturn(BigDecimal.ONE);
-		when(mockGiro2.getKreditlinie()).thenReturn(BigDecimal.ONE);
-		when(mockGiro3.getKreditlinie()).thenReturn(BigDecimal.ONE);
-		when(mockSpar.getKreditlinie()).thenReturn(BigDecimal.ZERO);
+		when(mockGiro1.getKreditlinie()).thenReturn(Geldbetrag.createInEuro(BigDecimal.ONE));
+		when(mockGiro2.getKreditlinie()).thenReturn(Geldbetrag.createInEuro(BigDecimal.ONE));
+		when(mockGiro3.getKreditlinie()).thenReturn(Geldbetrag.createInEuro(BigDecimal.ONE));
+		when(mockSpar.getKreditlinie()).thenReturn(Geldbetrag.createInEuro(BigDecimal.ZERO));
 		
-		when(mockGiro1.getAktuellVerfuegbarerBetrag()).thenReturn(BigDecimal.TEN);
-		when(mockGiro2.getAktuellVerfuegbarerBetrag()).thenReturn(BigDecimal.TEN);
-		when(mockGiro3.getAktuellVerfuegbarerBetrag()).thenReturn(BigDecimal.TEN);
-		when(mockSpar.getAktuellVerfuegbarerBetrag()).thenReturn(BigDecimal.TEN);
+		when(mockGiro1.getAktuellVerfuegbarerBetrag()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
+		when(mockGiro2.getAktuellVerfuegbarerBetrag()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
+		when(mockGiro3.getAktuellVerfuegbarerBetrag()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
+		when(mockSpar.getAktuellVerfuegbarerBetrag()).thenReturn(Geldbetrag.createInEuro(BigDecimal.TEN));
 		
-		BigDecimal kreditlinie = account.getGesamtKreditlinie();
-		BigDecimal verfuegbar = account.getGesamtVerfuegbarerBetrag();
+		Geldbetrag kreditlinie = account.getGesamtKreditlinie();
+		Geldbetrag verfuegbar = account.getGesamtVerfuegbarerBetrag();
 		
 		assertThat(kreditlinie, is(BigDecimal.valueOf(3)));
 		assertThat(verfuegbar, is(BigDecimal.valueOf(40)));
@@ -128,7 +129,7 @@ public class SpyAlsMockTest {
 		verify(mockGiro1).getAktuellVerfuegbarerBetrag();
 	}
 	
-	private Konto erstelleKonto(String kontonummer, Kontoart kontoart, BigDecimal kreditlinie, BigDecimal saldo)
+	private Konto erstelleKonto(String kontonummer, Kontoart kontoart, Geldbetrag kreditlinie, Geldbetrag saldo)
 	{
 		Konto konto = new Konto();
 		konto.setKontoart(kontoart);
