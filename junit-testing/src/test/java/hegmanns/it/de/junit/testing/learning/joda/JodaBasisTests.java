@@ -1,6 +1,8 @@
 package hegmanns.it.de.junit.testing.learning.joda;
 
-import java.time.LocalTime;
+import static org.hamcrest.Matchers.comparesEqualTo;
+import static org.hamcrest.Matchers.not;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -11,7 +13,6 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeUtils;
 import org.joda.time.LocalDate;
 import org.junit.Test;
-import static org.hamcrest.Matchers.*;
 
 public class JodaBasisTests {
 
