@@ -1,5 +1,6 @@
 package hegmanns.it.de.junit.testing.hamcrest;
 
+import hegmanns.it.de.junit.basisklassen.Geldbetrag;
 import hegmanns.it.de.junit.basisklassen.Konto;
 import hegmanns.it.de.junit.basisklassen.Kontoart;
 
@@ -12,8 +13,8 @@ import org.junit.Test;
 
 public class KomplexeVergleicheAmObjekt
 {
-    private Konto girokonto = new Konto( "11111" , Kontoart.GIROKONTO , BigDecimal.TEN , BigDecimal.TEN );
-    private Konto sparkonto = new Konto( "11112" , Kontoart.SPARKONTO , BigDecimal.TEN , null );
+    private Konto girokonto = new Konto( "11111" , Kontoart.GIROKONTO , Geldbetrag.createInEuro(BigDecimal.TEN) , Geldbetrag.createInEuro(BigDecimal.TEN) );
+    private Konto sparkonto = new Konto( "11112" , Kontoart.SPARKONTO , Geldbetrag.createInEuro(BigDecimal.TEN) , null );
 
     @Test
     public void propertyVergleich()

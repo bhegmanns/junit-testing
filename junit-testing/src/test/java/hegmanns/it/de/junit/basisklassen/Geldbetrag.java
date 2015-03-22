@@ -2,10 +2,6 @@ package hegmanns.it.de.junit.basisklassen;
 
 import java.math.BigDecimal;
 
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
-
 /**
  * Abbildung eines Geldbetrags, bestehend aus Betrag und Waehrung.
  * 
@@ -52,6 +48,12 @@ public class Geldbetrag extends AbstractCommonObject{
 		return new Geldbetrag(getBetrag().add(betragIngleicherWaehrung), getWaehrung());
 	}
 	
+	/**
+	 * Bildet die Summe aus diesem Geldbetrag sowie dem uebergebenen Geldbetrag, sofern die Waehrungen gleich sind.
+	 * 
+	 * @param geldbetragInGleicherWaehrung der hinzuaddierende Geldbetrag
+	 * @return die Summe der beiden Geldbetraege
+	 */
 	public Geldbetrag add(Geldbetrag geldbetragInGleicherWaehrung)
 	{
 		if (getWaehrung().equals(geldbetragInGleicherWaehrung.getWaehrung()))
@@ -60,9 +62,23 @@ public class Geldbetrag extends AbstractCommonObject{
 		}
 		else
 		{
-			throw new IllegalArgumentException("");
+			throw new IllegalArgumentException("Waehrungen unterschiedlich (" + this.waehrung + " % " + geldbetragInGleicherWaehrung.waehrung + ")");
 		}
 	}
 	
+	/**
+	 * Bildet die Differenz aus diesem Geldbetrag und dem uebergebenen Geldbetrag.
+	 * 
+	 * @param geldbetragInGleicherWaehrung der abzuziehende Geldbetrag
+	 * @return Differenz der beiden Geldbetraege
+	 */
+	public Geldbetrag subtract(Geldbetrag geldbetragInGleicherWaehrung)
+	{
+		return add(geldbetragInGleicherWaehrung.negate());
+	}
 	
+	public Geldbetrag negate()
+	{
+		return new Geldbetrag(betrag.negate(), waehrung);
+	}
 }
