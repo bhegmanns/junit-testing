@@ -39,8 +39,8 @@ public class SpyAlsMockTest {
 		Geldbetrag kreditlinie = account.getGesamtKreditlinie();
 		Geldbetrag verfuegbar = account.getGesamtVerfuegbarerBetrag();
 		
-		assertThat(kreditlinie, is(BigDecimal.valueOf(21)));
-		assertThat(verfuegbar, is(BigDecimal.valueOf(46)));
+		assertThat(kreditlinie, is(Geldbetrag.createInEuro(BigDecimal.valueOf(21))));
+		assertThat(verfuegbar, is(Geldbetrag.createInEuro(BigDecimal.valueOf(46))));
 		
 		/*
 		 * getKreditlinie(): 1 mal direkt ueber account.getGesamtKreditlinie()
@@ -91,8 +91,8 @@ public class SpyAlsMockTest {
 		
 		Geldbetrag kreditlinie = account.getGesamtKreditlinie();
 		Geldbetrag verfuegbar = account.getGesamtVerfuegbarerBetrag();
-		assertThat(kreditlinie, is(BigDecimal.valueOf(3)));
-		assertThat(verfuegbar, is(BigDecimal.valueOf(40)));
+		assertThat(kreditlinie, is(Geldbetrag.createInEuro(BigDecimal.valueOf(3))));
+		assertThat(verfuegbar, is(Geldbetrag.createInEuro(BigDecimal.valueOf(40))));
 		
 		verify(spyGiro1, times(1)).getKreditlinie();
 		verify(spyGiro1).getSaldo();
@@ -121,8 +121,8 @@ public class SpyAlsMockTest {
 		Geldbetrag kreditlinie = account.getGesamtKreditlinie();
 		Geldbetrag verfuegbar = account.getGesamtVerfuegbarerBetrag();
 		
-		assertThat(kreditlinie, is(BigDecimal.valueOf(3)));
-		assertThat(verfuegbar, is(BigDecimal.valueOf(40)));
+		assertThat(kreditlinie, is(Geldbetrag.createInEuro(BigDecimal.valueOf(3))));
+		assertThat(verfuegbar, is(Geldbetrag.createInEuro(BigDecimal.valueOf(40))));
 		
 		verify(mockGiro1, times(1)).getKreditlinie();
 		verify(mockGiro1, never()).getSaldo();

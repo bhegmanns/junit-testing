@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * @author B. Hegmanns
  */
 @ToStringRepresentation(fieldNames = {"betrag", "waehrung"})
-public class Geldbetrag extends AbstractCommonObject{
+public class Geldbetrag extends AbstractCommonObject implements Comparable<Geldbetrag>{
 	
 	@EqualsRepresentationField(represented = true)
 	private BigDecimal betrag;
@@ -80,5 +80,16 @@ public class Geldbetrag extends AbstractCommonObject{
 	public Geldbetrag negate()
 	{
 		return new Geldbetrag(betrag.negate(), waehrung);
+	}
+
+	@Override
+	public int compareTo(Geldbetrag geldbetrag) {
+		if (waehrung.equals(geldbetrag.getWaehrung())){
+			return betrag.compareTo(geldbetrag.betrag);
+		}
+		else
+		{
+			throw new IllegalArgumentException("Waehrung unterschiedlich, Vergleich nicht moeglich");
+		}
 	}
 }

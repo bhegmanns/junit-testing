@@ -60,7 +60,7 @@ public class KomplexeVergleichMitObjektenMitCollectionsTest
                 "" ,
                 konten ,
                 Matchers.everyItem( Matchers.<Konto> allOf( Matchers.hasProperty( "kontonummer" , Matchers.startsWith( "1111" ) ) ,
-                        Matchers.hasProperty( "saldo" , Matchers.greaterThan( BigDecimal.ZERO ) ) ) ) );
+                        Matchers.hasProperty( "saldo" , Matchers.greaterThan( Geldbetrag.createInEuro(BigDecimal.ZERO )) ) ) ) );
     }
 
     /**

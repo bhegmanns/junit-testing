@@ -58,7 +58,7 @@ public class KomplexesMatchingTest {
 	@Test
 	public void mockitoMatcher()
 	{
-		when(waehrungsrechner.rechneInZielwaehrung(Matchers.eq(new Geldbetrag(BigDecimal.ONE, Waehrung.USD)))).thenReturn(new Geldbetrag(BigDecimal.TEN, Waehrung.USD));
+		when(waehrungsrechner.rechneInZielwaehrung(Matchers.eq(new Geldbetrag(BigDecimal.ONE, Waehrung.USD)))).thenReturn(new Geldbetrag(BigDecimal.TEN, Waehrung.EURO));
 		
 		boolean ergebnis = service.auszahlungVornehmen(new Geldbetrag(BigDecimal.ONE, Waehrung.USD), konto);
 		assertThat(ergebnis, is(true));
