@@ -19,7 +19,8 @@ import org.junit.runner.RunWith;
  * Im Gegensatz zu den parametrierten Tests stehen hier die Parameter in jeder
  * Testmethode und nicht im Konstruktor. Auch das Handling ist wesentlich
  * einfacher. Allerdings muss hier bedacht werden, dass Kombinationen der
- * einzelnen Parameter gebildet werden. Das ist im Allgemeinen sehr gut.
+ * einzelnen Parameter gebildet werden. Das ist im Allgemeinen sehr gut zur Bildung von Permutationen
+ * von Eingangsgroessen.
  * 
  * Bitte auch noch beachten, dass die Testmethode mit {@link Theory} annotiiert
  * ist und nicht mit {@link Test}!
@@ -56,7 +57,7 @@ public class EinTestMitTheories
      * @param wert
      */
     @Theory
-    public void foo( int wert )
+    public void assumeTest( int wert )
     {
         // Assume.assumeTrue(false);
         Assume.assumeTrue( "Wert '" + wert + "' kleiner gleich 0" , wert > 0 );
