@@ -3,6 +3,8 @@ package hegmanns.it.de.junit.basisklassen;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import de.hegmanns.it.utils.core.commonobject.AbstractCommonObject;
+
 /**
  * Abbildung eines Konto, hier recht banal realisiert.
  * 

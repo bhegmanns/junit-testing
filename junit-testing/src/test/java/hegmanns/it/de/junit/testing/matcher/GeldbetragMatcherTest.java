@@ -54,4 +54,11 @@ public class GeldbetragMatcherTest {
 		
 		assertThat(value, is(expected));
 	}
+	
+	@Test
+	public void foo()
+	{
+		Geldbetrag expected = new Geldbetrag(BigDecimal.TEN, Waehrung.EURO);
+		Geldbetrag value    = new Geldbetrag(BigDecimal.TEN, Waehrung.USD);
+	}
 }

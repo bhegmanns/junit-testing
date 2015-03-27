@@ -2,6 +2,10 @@ package hegmanns.it.de.junit.basisklassen;
 
 import java.math.BigDecimal;
 
+import de.hegmanns.it.utils.core.commonobject.AbstractCommonObject;
+import de.hegmanns.it.utils.core.commonobject.EqualsRepresentationField;
+import de.hegmanns.it.utils.core.commonobject.ToStringRepresentation;
+
 /**
  * Abbildung eines Geldbetrags, bestehend aus Betrag und Waehrung.
  * 
