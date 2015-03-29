@@ -28,7 +28,7 @@
 <repositories>
 		<repository>
 			<id>rep-repo</id>
-			<url>https://github.com/bhegmanns/mvn_repo/</url>
+			<url>https://github.com/bhegmanns/mvn_repo/tree/master/repo</url>
 		</repository>
 	</repositories>
 
