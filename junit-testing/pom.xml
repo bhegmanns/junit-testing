@@ -29,6 +29,7 @@
 		<repository>
 			<id>rep-repo</id>
 			<url>https://github.com/bhegmanns/mvn_repo/tree/master/repo/</url>
+			<layout>default</layout>
 			<releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
       		<snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
 		</repository>
