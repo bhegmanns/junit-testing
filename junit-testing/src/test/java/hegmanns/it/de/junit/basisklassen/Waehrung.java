@@ -14,6 +14,7 @@ public class Waehrung {
 
 	public String waehrungssymbol;
 	
+	
 	public Waehrung(String symbol)
 	{
 		this.waehrungssymbol = symbol;

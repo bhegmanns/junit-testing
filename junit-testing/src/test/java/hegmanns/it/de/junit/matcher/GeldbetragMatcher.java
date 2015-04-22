@@ -21,11 +21,34 @@ import org.hamcrest.TypeSafeMatcher;
  */
 public class GeldbetragMatcher extends TypeSafeMatcher<Geldbetrag>{
 
+	/**
+	 * Matcher gegen einen Geldbetrag. Vergleicht die beiden Geldbetraege auf
+	 * Betrag UND Waehrung.
+	 * 
+	 * @param geldbetrag der Soll-Wert
+	 * @return gibt den Matcher zurueck
+	 */
 	public static <T extends Geldbetrag> GeldbetragMatcher equalTo(T geldbetrag)
 	{
 		return new GeldbetragMatcher(geldbetrag);
 	}
 	
+	public static <T extends Geldbetrag> GeldbetragMatcher equalToEuro(BigDecimal betragInEuro)
+	{
+		return equalTo(Geldbetrag.createInEuro(betragInEuro));
+	}
+	
+	public static <T extends Geldbetrag> GeldbetragMatcher equalsToEuro(double betragInEuro)
+	{
+		return equalToEuro(BigDecimal.valueOf(betragInEuro));
+	}
+	
+	/**
+	 * Matcher gegen die Waehrung des uebergebenen Geldbetrag.
+	 * 
+	 * @param waehrung die Soll-Waehrung
+	 * @return gibt den Matcher zurueck
+	 */
 	public static <T extends Geldbetrag> GeldbetragMatcher equalWaehrung(Waehrung waehrung)
 	{
 		return new GeldbetragMatcher(new Geldbetrag(BigDecimal.ZERO, waehrung), true);
@@ -72,8 +95,13 @@ public class GeldbetragMatcher extends TypeSafeMatcher<Geldbetrag>{
 	@Override
 	protected void describeMismatchSafely(Geldbetrag item,
 			Description mismatchDescription) {
-		mismatchDescription.appendValue(item).appendText(" isn't ")
-		.appendText(" same as ").appendValue(exptected);
+		if (!scopeOnlyWaehrung){
+		mismatchDescription.appendValue(item).appendText(" isn't same as ")
+		.appendValue(exptected);}
+		else
+		{
+			mismatchDescription.appendText("Currency from ").appendValue(item).appendText(" isn't ").appendValue(exptected.getWaehrung());
+		}
 	}
 
 	@Override
