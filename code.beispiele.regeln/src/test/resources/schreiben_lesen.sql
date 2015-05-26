@@ -1,0 +1,22 @@
+delete from orderkern.BESTELLPOSITION;
+delete  from orderkern.BESTELLUNG;
+delete from orderkern.KUNDE;
+delete from orderkern.RECHNUNG;
+delete  from orderkern.VERKAUFSPREIS;
+delete from orderkern.LIEFERANT;
+delete from orderkern.WARE;
+delete  from orderkern.HERSTELLER;
+delete  from orderkern.WARENGRUPPE;
+delete from orderkern.WARENKATEGORIE;
+
+select * from orderkern.BESTELLPOSITION;
+select * from orderkern.BESTELLUNG;
+select * from orderkern.HERSTELLER;
+select * from orderkern.KUNDE;
+select * from orderkern.LIEFERANT;
+select * from orderkern.RECHNUNG;
+select * from orderkern.VERKAUFSPREIS;
+select * from orderkern.WARE;
+select * from orderkern.WARENGRUPPE;
+select * from orderkern.WARENKATEGORIE;
+commit;
