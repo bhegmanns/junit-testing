@@ -44,4 +44,6 @@
 	p:sessionFactory-ref = "sessionFactory">
 </bean>
 
+<bean id = "printer" class="it.hegmanns.de.code.beispiele.common.PrintService"/>
+
 </beans>
