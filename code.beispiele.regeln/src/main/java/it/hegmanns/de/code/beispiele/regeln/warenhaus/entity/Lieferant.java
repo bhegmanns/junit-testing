@@ -20,7 +20,7 @@ public class Lieferant {
 	@Column(length = 30, nullable = false)
 	private String name;
 	
-	@Column(nullable = true)//, columnDefinition = "in (1, 2, 3, 4, 5, 6)")
+	@Column(nullable = true, scale = 1)
 	@Check(constraints = "schulnote in (1, 2, 3, 4, 5, 6)")
 	private Integer schulnote;
 	

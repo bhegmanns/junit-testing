@@ -69,6 +69,7 @@ public class Verkaufspreis {
 	private Lieferant lieferant;
 	
 	@Temporal(TemporalType.DATE)
+//	@Column(columnDefinition = "DATE CHECK (GUELTIGKEITERSTERTAG <= GUELTIGKEITLETZTERTAG)")
 	private Date gueltigkeitErsterTag;
 	
 	@Temporal(TemporalType.DATE)
