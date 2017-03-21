@@ -44,6 +44,12 @@ public class RequiredLoggingEntrance implements LoggingEntrance {
 
 
 
+	/**
+	 * 
+	 * @param level
+	 * @param loggerName
+	 * @param messagePart
+	 */
 	public RequiredLoggingEntrance(Level level, String loggerName,
 			String messagePart) {
 		super();
