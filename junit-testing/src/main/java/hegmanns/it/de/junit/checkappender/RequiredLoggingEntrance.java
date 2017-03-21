@@ -65,6 +65,11 @@ public class RequiredLoggingEntrance implements LoggingEntrance {
 			hasMatched = hasMatched || (isLevel(loggingEvent) && isLoggerName(loggingEvent) && isMessagePart(loggingEvent));
 	}
 	
+	/**
+	 * Kontrolliert den LOG-Level
+	 * @param loggingEvent
+	 * @return
+	 */
 	private boolean isLevel(LoggingEvent loggingEvent){
 		return level == null || level.equals(loggingEvent.getLevel());
 	}
