@@ -6,6 +6,11 @@ import java.util.List;
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
 
+/**
+ * 
+ * @author Bernd Hegmanns
+ *
+ */
 public class CheckAppender extends AppenderSkeleton {
 	
 	private List<LoggingEntrance> loggingEntrances = new ArrayList<>();
