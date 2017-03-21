@@ -27,6 +27,9 @@ public class RequiredLoggingEntrance implements LoggingEntrance {
 	
 	
 
+	/**
+	 * Das ist ein Konstruktor
+	 */
 	public RequiredLoggingEntrance() {
 		super();
 	}
