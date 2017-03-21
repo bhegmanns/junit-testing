@@ -69,6 +69,11 @@ public class RequiredLoggingEntrance implements LoggingEntrance {
 		return level == null || level.equals(loggingEvent.getLevel());
 	}
 	
+	/**
+	 * 
+	 * @param loggingEvent
+	 * @return
+	 */
 	private boolean isLoggerName(LoggingEvent loggingEvent)
 	{
 		return loggerName == null || loggerName.equals(loggingEvent.getLoggerName());
