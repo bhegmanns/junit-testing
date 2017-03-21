@@ -17,6 +17,12 @@ public class RequiredLoggingEntrance implements LoggingEntrance {
 	
 	private boolean hasMatched = false;
 	
+	/**
+	 * 
+	 * @param level
+	 * @param messagePart
+	 * @return
+	 */
 	public static final RequiredLoggingEntrance create(Level level, String messagePart){
 		RequiredLoggingEntrance entrance = new RequiredLoggingEntrance();
 		entrance.level = level;
