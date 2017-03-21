@@ -15,6 +15,10 @@ public class CheckAppender extends AppenderSkeleton {
 	
 	private List<LoggingEntrance> loggingEntrances = new ArrayList<>();
 	
+	/**
+	 * 
+	 * @param loggingEntrance
+	 */
 	public void addLoggingEntrance(LoggingEntrance loggingEntrance){
 		loggingEntrances.add(loggingEntrance);
 	}
