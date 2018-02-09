@@ -7,7 +7,7 @@ import de.hegmanns.it.utils.core.commonobject.EqualsRepresentationField;
 import de.hegmanns.it.utils.core.commonobject.ToStringRepresentation;
 
 /**
- * Abbildung eines Geldbetrags, bestehend aus Betrag und Waehrung.
+ * Abbildung eines Geldbetrags, bestehend aus Betrag und Waehrung. 
  * 
  * @author B. Hegmanns
  */
