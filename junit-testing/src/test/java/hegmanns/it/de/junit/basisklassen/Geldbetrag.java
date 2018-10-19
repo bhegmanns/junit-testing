@@ -2,22 +2,15 @@ package hegmanns.it.de.junit.basisklassen;
 
 import java.math.BigDecimal;
 
-import de.hegmanns.it.utils.core.commonobject.AbstractCommonObject;
-import de.hegmanns.it.utils.core.commonobject.EqualsRepresentationField;
-import de.hegmanns.it.utils.core.commonobject.ToStringRepresentation;
-
 /**
  * Abbildung eines Geldbetrags, bestehend aus Betrag und Waehrung. 
  * 
  * @author B. Hegmanns
  */
-@ToStringRepresentation(fieldNames = {"betrag", "waehrung"})
-public class Geldbetrag extends AbstractCommonObject implements Comparable<Geldbetrag>{
+public class Geldbetrag  implements Comparable<Geldbetrag>{
 	
-	@EqualsRepresentationField(represented = true)
 	private BigDecimal betrag;
 	
-	@EqualsRepresentationField(represented = true)
 	private Waehrung waehrung;
 	
 	public Geldbetrag(BigDecimal betrag, Waehrung waehrung)
@@ -96,4 +89,43 @@ public class Geldbetrag extends AbstractCommonObject implements Comparable<Geldb
 			throw new IllegalArgumentException("Waehrung unterschiedlich, Vergleich nicht moeglich");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Geldbetrag [betrag=" + betrag + ", waehrung=" + waehrung + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((betrag == null) ? 0 : betrag.hashCode());
+		result = prime * result + ((waehrung == null) ? 0 : waehrung.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Geldbetrag other = (Geldbetrag) obj;
+		if (betrag == null) {
+			if (other.betrag != null)
+				return false;
+		} else if (!betrag.equals(other.betrag))
+			return false;
+		if (waehrung == null) {
+			if (other.waehrung != null)
+				return false;
+		} else if (!waehrung.equals(other.waehrung))
+			return false;
+		return true;
+	}
+
+	
+	
 }
