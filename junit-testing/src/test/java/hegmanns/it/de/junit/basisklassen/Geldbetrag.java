@@ -2,22 +2,16 @@ package hegmanns.it.de.junit.basisklassen;
 
 import java.math.BigDecimal;
 
-import de.hegmanns.it.utils.core.commonobject.AbstractCommonObject;
-import de.hegmanns.it.utils.core.commonobject.EqualsRepresentationField;
-import de.hegmanns.it.utils.core.commonobject.ToStringRepresentation;
 
 /**
  * Abbildung eines Geldbetrags, bestehend aus Betrag und Waehrung. 
  * 
  * @author B. Hegmanns
  */
-@ToStringRepresentation(fieldNames = {"betrag", "waehrung"})
-public class Geldbetrag extends AbstractCommonObject implements Comparable<Geldbetrag>{
+public class Geldbetrag  implements Comparable<Geldbetrag>{
 	
-	@EqualsRepresentationField(represented = true)
 	private BigDecimal betrag;
 	
-	@EqualsRepresentationField(represented = true)
 	private Waehrung waehrung;
 	
 	public Geldbetrag(BigDecimal betrag, Waehrung waehrung)
@@ -96,4 +90,11 @@ public class Geldbetrag extends AbstractCommonObject implements Comparable<Geldb
 			throw new IllegalArgumentException("Waehrung unterschiedlich, Vergleich nicht moeglich");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Geldbetrag [betrag=" + betrag + ", waehrung=" + waehrung + "]";
+	}
+	
+	
 }

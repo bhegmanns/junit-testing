@@ -3,14 +3,13 @@ package hegmanns.it.de.junit.basisklassen;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import de.hegmanns.it.utils.core.commonobject.AbstractCommonObject;
 
 /**
  * Abbildung eines Konto, hier recht banal realisiert.
  * 
  * @author B. Hegmanns
  */
-public class Konto extends AbstractCommonObject
+public class Konto
 {
 
     /**
