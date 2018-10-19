@@ -12,9 +12,8 @@
 
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-		<version.compiler>2.3.2</version.compiler>
-		<version.jdk>1.8</version.jdk>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 
 		<version.hamcrest>1.3</version.hamcrest>
 		<version.mockito>1.9.5</version.mockito>
@@ -93,23 +92,10 @@
 			<artifactId>google-collections</artifactId>
 			<version>1.0</version>
 		</dependency>
-		<dependency>
-			<groupId>de.hegmanns.it</groupId>
-			<artifactId>utils-core</artifactId>
-			<version>1.0.0</version>
-		</dependency>
   </dependencies>
   
   <build>
 	<plugins>
-		<plugin>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.1</version>
-			<configuration>
-				<target>${version.jdk}</target>
-				<source>${version.jdk}</source>
-			</configuration>
-		</plugin>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-surefire-plugin</artifactId>
